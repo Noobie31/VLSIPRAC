@@ -1,0 +1,79 @@
+// ===============================
+// Full Adder – Behavioral modeling
+// ===============================
+module full_adder_behavioral (
+    input  wire A,       // operand bit
+    input  wire B,       // operand bit
+    input  wire C_in,    // carry in
+    output reg  S,       // sum
+    output reg  C_out    // carry out
+);
+    always @* begin
+        {C_out, S} = A + B + C_in;   // synthesizable behavioral style
+    end
+endmodule
+
+// ============================
+// Full Adder – Dataflow model
+// ============================
+module full_adder_dataflow (
+    input  wire A,
+    input  wire B,
+    input  wire C_in,
+    output wire S,
+    output wire C_out
+);
+    assign S     = A ^ B ^ C_in;
+    assign C_out = (A & B) | (A & C_in) | (B & C_in);
+endmodule
+
+// =============================
+// Full Adder – Structural model
+// Built from two half adders
+// =============================
+module half_adder (
+    input  wire X,
+    input  wire Y,
+    output wire SUM,
+    output wire CARRY
+);
+    assign SUM   = X ^ Y;
+    assign CARRY = X & Y;
+endmodule
+
+module full_adder_structural (
+    input  wire A,
+    input  wire B,
+    input  wire C_in,
+    output wire S,
+    output wire C_out
+);
+    wire s1, c1, c2;
+
+    // First half adder: A + B
+    half_adder HA1 (
+        .X(A), .Y(B),
+        .SUM(s1), .CARRY(c1)
+    );
+
+    // Second half adder: s1 + C_in
+    half_adder HA2 (
+        .X(s1), .Y(C_in),
+        .SUM(S), .CARRY(c2)
+    );
+
+    // Final carry
+    assign C_out = c1 | c2;
+endmodule
+
+// Truth Table
+// A  B  C_in |  S  C_out
+// -----------+----------
+// 0  0   0   |  0    0
+// 0  0   1   |  1    0
+// 0  1   0   |  1    0
+// 0  1   1   |  0    1
+// 1  0   0   |  1    0
+// 1  0   1   |  0    1
+// 1  1   0   |  0    1
+// 1  1   1   |  1    1

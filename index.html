@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stretched Background + Scroll Window</title>
+  <title>Two-Column Topics Overlay</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,10 +12,13 @@
       <div class="scroll-window">
         <img src="longimage.png" alt="Scrollable content" />
 
-        <!-- wrap longdown so we can overlay the topics list on top of it -->
         <div class="down-wrap">
           <img src="longdown.png" alt="Extended content" />
-          <div id="topics-list" class="topics-list"></div>
+          <!-- 2-column overlay on top of longdown.png -->
+          <div class="topics-overlay">
+            <div id="topics-left" class="topics-col left"></div>
+            <div id="topics-right" class="topics-col right"></div>
+          </div>
         </div>
       </div>
     </div>
