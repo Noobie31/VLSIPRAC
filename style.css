@@ -1,0 +1,56 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* No page scrollbars */
+}
+
+/* Fullscreen stretched background */
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('bgimage.png') no-repeat center center;
+  background-size: 100% 100%; /* stretch both directions */
+}
+
+/* Scrollable overlay frame */
+.scroll-frame {
+  position: absolute;
+  /* ⚙️ these percentages control where it appears on the bg image */
+  top: 20%;      /* distance from top of image */
+  left: 49%;     /* distance from left of image */
+  width: 50.2%;    /* width relative to image */
+  height: 44.3%;   /* height relative to image */
+  overflow: hidden;
+  border-radius: 10px;
+  /* optional subtle border to visualize alignment */
+  /* border: 2px solid rgba(255, 255, 255, 0.2); */
+}
+
+/* Scrollable inner content */
+.scroll-window {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #666 transparent;
+  background: #fff; /* background inside the window */
+}
+
+/* Long image inside */
+.scroll-window img {
+  width: 100%;
+  display: block;     /* removes inline gaps */
+  margin: 0;
+  padding: 0;
+  border: none;
+}
