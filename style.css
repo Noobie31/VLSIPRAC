@@ -1,39 +1,24 @@
 /* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden; /* No page scrollbars */
-}
+html, body { width: 100%; height: 100%; overflow: hidden; }
 
 /* Fullscreen stretched background */
 #bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  position: fixed; inset: 0;
   background: url('bgimage.png') no-repeat center center;
-  background-size: 100% 100%; /* stretch both directions */
+  background-size: 100% 100%; /* force stretch both directions */
 }
 
-/* Scrollable overlay frame */
+/* Your tuned placement */
 .scroll-frame {
   position: absolute;
-  /* ⚙️ these percentages control where it appears on the bg image */
-  top: 20%;      /* distance from top of image */
-  left: 49%;     /* distance from left of image */
-  width: 50.2%;    /* width relative to image */
-  height: 44.3%;   /* height relative to image */
+  top: 20%;
+  left: 49%;
+  width: 50.2%;
+  height: 44.3%;
   overflow: hidden;
   border-radius: 10px;
-  /* optional subtle border to visualize alignment */
-  /* border: 2px solid rgba(255, 255, 255, 0.2); */
 }
 
 /* Scrollable inner content */
@@ -43,14 +28,69 @@ html, body {
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #666 transparent;
-  background: #fff; /* background inside the window */
+  background: #fff;
 }
+.scroll-window::-webkit-scrollbar { width: 8px; }
+.scroll-window::-webkit-scrollbar-thumb { background: #bbb; border-radius: 8px; }
+.scroll-window::-webkit-scrollbar-track { background: transparent; }
 
-/* Long image inside */
+/* Long images */
 .scroll-window img {
   width: 100%;
-  display: block;     /* removes inline gaps */
+  display: block;
   margin: 0;
-  padding: 0;
   border: none;
+}
+
+/* The bottom section with overlay list */
+.down-wrap { position: relative; }
+
+/* Overlay topics list on top of longdown.png */
+.topics-list {
+  position: absolute;
+  /* adjust these paddings to place the list exactly where you want on longdown.png */
+  top: 6%;
+  left: 6%;
+  right: 6%;
+  /* no background, pure text look */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Each topic row: text first, then two small buttons */
+.topic-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Pure text look for the title */
+.topic-title {
+  flex: 1;
+  font-size: 0.98rem;
+  line-height: 1.35;
+}
+
+/* Small buttons */
+.btn {
+  appearance: none;
+  border: 0;
+  background: #f0f0f0;
+  color: #111;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn:hover { background: #e5e5e5; }
+
+/* Compact download button (icon size) */
+.btn-icon {
+  padding: 6px 8px;
+  font-size: 0.95rem; /* just a tiny icon size */
+  line-height: 1;
 }

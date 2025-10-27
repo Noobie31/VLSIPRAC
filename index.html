@@ -11,9 +11,16 @@
     <div class="scroll-frame">
       <div class="scroll-window">
         <img src="longimage.png" alt="Scrollable content" />
-        <img src="longdown.png" alt="Extended content" />
+
+        <!-- wrap longdown so we can overlay the topics list on top of it -->
+        <div class="down-wrap">
+          <img src="longdown.png" alt="Extended content" />
+          <div id="topics-list" class="topics-list"></div>
+        </div>
       </div>
     </div>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
