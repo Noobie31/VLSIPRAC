@@ -22,7 +22,7 @@ async function loadTopics() {
       // Copy button
       const copyBtn = document.createElement('button');
       copyBtn.className = 'btn';
-      copyBtn.textContent = 'C';
+      copyBtn.textContent = 'Copy';
       copyBtn.addEventListener('click', async () => {
         try {
           await navigator.clipboard.writeText(t.body);
@@ -34,7 +34,7 @@ async function loadTopics() {
         }
       });
 
-      // Download button (plain text version)
+      // Download button (plain text version)jkkkkkkkkkssss
       const dlBtn = document.createElement('button');
       dlBtn.className = 'btn btn-download';
       dlBtn.textContent = 'D';
